@@ -1,0 +1,41 @@
+*:not(i) {
+  font-family: monospace !important;
+}
+
+.title {
+  color: #6c0f2cff !important;
+  cursor: default;
+}
+.subtitle {
+  color: #6c0f2cff !important;
+  cursor: default;
+}
+
+.button {
+  width: 300px;
+  margin-top: 70px;
+}
+
+.button.is-primary {
+  background-color: #95153fff;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-primary:hover {
+  background-color: #4e0b20ff;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-info {
+  background-color: #748e1cff;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-info:hover {
+  background-color: #3c4a0eff;
+  border-color: transparent;
+  color: #fff;
+}

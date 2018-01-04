@@ -1,0 +1,24 @@
+
+.button.is-shifter {
+  background-color: #a6ff62ff;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-shifter:hover {
+  background-color: #92ff3fff;
+  border-color: transparent;
+  color: #fff;
+}
+
+.select {
+    margin-right: 10px;
+}
+
+.checkbox {
+    margin-right: 20px;
+}
+
+#osSelect {
+    width: 200px;
+}

@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+*:not(i) {
+  font-family: monospace !important;
+}
+
+html {
+  background-color: #ceffa9ff !important;
+}
+
+.textarea.is-beet {
+  border-color: transparent !important;
+}
+
+.input.is-beet {
+  border-color: transparent !important;
+}
+
+.textarea.is-beet:focus {
+  outline: none !important;
+  border-color: #c22255ff !important;
+  box-shadow: 0 0 10px #c22255ff;
+}
+
+.input.is-beet:focus {
+  outline: none !important;
+  border-color: #c22255ff !important;
+  box-shadow: 0 0 10px #c22255ff;
+}

@@ -1,0 +1,46 @@
+#selectionCounter {
+  background-color: gray;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+#navMenu.is-active {
+    background-color: #6c0f2cff;
+}
+
+.hero.is-beet {
+  background-color: #c22255ff;
+  color: #fff;
+}
+
+a.navbar-item {
+  color: #fff;
+  outline: 0;
+}
+
+.navbar-item:hover {
+  background-color: #a6ff62ff;
+  color: #c22255ff;
+}
+
+a.navbar-item.is-active {
+  background-color: #a6ff62ff;
+  color: #c22255ff;
+}
+
+.footer {
+  background-color: #6c0f2cff;
+}
+
+.footer h3, strong{
+  color: #fff !important;
+  cursor: default;
+}
+
+.footer a {
+  color: #c2df5bff;
+}
+
+.footer a:hover {
+  color: #b1d72fff;
+}

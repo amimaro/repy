@@ -1,0 +1,71 @@
+<section class="hero is-beet">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a [routerLink]="['/home']">
+              <img src="assets/logo.png" alt="Logo Text" style="width: 60px; height: 60px">
+          </a>
+          <a class="navbar-item" [routerLink]="['/home']">
+            <img src="assets/logo-text.png" alt="Logo Text">
+          </a>
+          <span class="navbar-burger burger" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navMenu" class="navbar-menu has-text-weight-semibold">
+          <div class="navbar-end" style="margin-right: 10%">
+            <a class="navbar-item" [routerLink]="['/home']" [routerLinkActive]="['is-active']">
+              Home
+            </a>
+            <a class="navbar-item" [routerLink]="['/packages']" [routerLinkActive]="['is-active']">
+              Search Packages
+            </a>
+            <a class="navbar-item" [routerLink]="['/list']" [routerLinkActive]="['is-active']">
+              <!-- <span id="selectionCounter" class="icon" (onItemSelected)="itemSelected($event)">
+                    0
+                </span> -->
+              <span>Selected Packs</span>
+            </a>
+            <a class="navbar-item" [routerLink]="['/shared']" [routerLinkActive]="['is-active']">
+              Shared Scripts
+            </a>
+            <a class="navbar-item" [routerLink]="['/docs']" [routerLinkActive]="['is-active']">
+              Documentation
+            </a>
+            <a class="navbar-item" href="https://github.com/Amimaro/Repy" target="_blank">
+                <span class="icon is-medium">
+                  <i class="fa fa-github fa-3" style="font-size: 32px"></i>
+                </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- fork me on github -->
+  <!-- <a href="https://github.com/Amimaro/Repy"><img style="position: absolute; top: 10px; left: 5px; border: 0; width: 90px; height: 90px" src="../assets/logo.png" alt="Repy"></a> -->
+  <!-- <a href="https://github.com/Amimaro/Repy"><img style="width: 100px; heigth: 100px; position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a> -->
+  <!-- <a href="https://github.com/Amimaro/Repy" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a> -->
+
+</section>
+
+<ng4-loading-spinner [template]='templateSpinner'> </ng4-loading-spinner>
+<router-outlet></router-outlet>
+
+<br>
+
+<footer class="footer fl-page-footer-wrap">
+  <div class="container">
+    <div class="content has-text-centered">
+      <h3>
+        <strong>repy</strong> by <a href="https://github.com/Amimaro/" target="_blank">Amimaro</a>. The source code is licensed under
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+      </h3>
+    </div>
+  </div>
+</footer>

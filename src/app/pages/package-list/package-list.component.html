@@ -1,0 +1,136 @@
+<div class="container" style="margin-top:20px">
+
+  <nav class="level" *ngIf="manager.selectedPacks.length > 0">
+    <div class="level-item has-text-centered">
+      <div>
+        <a class="button is-medium" (click)="clearSelections()">
+          <span class="icon is-medium">
+            <i class="fa fa-trash"></i>
+          </span>
+          <span>Clear Selections</span>
+        </a>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <label class="is-size-5">OS: </label>
+        <div class="select is-large">
+          <select [(ngModel)]="manager.displayOS" (ngModelChange)="selectOS($event)" id="osSelect">
+                  <option *ngFor="let os of manager.os" [ngValue]="os">{{os}}</option>
+              </select>
+        </div>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <a class="button is-large" [routerLink]="['/script']">
+          <span class="icon is-medium">
+            <i class="fa fa-cube"></i>
+          </span>
+          <span>Build script</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero is-medium" *ngIf="manager.selectedPacks.length == 0">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+            Nothing here :/
+        </h1>
+        <h2 class="subtitle">
+          You may start with some search...
+          <a [routerLink]="['/packages']" [routerLinkActive]="['is-active']">
+            Click here
+          </a>
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <div class="box" *ngFor="let p of manager.selectedPacks; let i = index">
+    <article class="media">
+      <div class="media-left" *ngIf="p.img">
+        <figure class="image is-64x64">
+          <img src="{{p.img}}" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{p.name}}</strong>
+            <br> {{p.description}}
+            <br>
+            <br>
+            <a class="is-size-7" href={{p.url}} target="_blank">Go to project page</a>
+          </p>
+        </div>
+        <nav class="level bd-structure-item bd-is-structure-container">
+          <div class="level-left bd-structure-item" *ngIf="p.selectedRelease">
+            <p class="heading">Releases: </p>
+            <div class="select">
+              <select [(ngModel)]="p.selectedRelease" (ngModelChange)="setRelease($event)">
+                      <option *ngFor="let r of p.releases" [ngValue]="r">{{r}}</option>
+              </select>
+            </div>
+            <div *ngIf="p.repo == 'npm'">
+              <label class="checkbox">
+                  <input type="checkbox" [(ngModel)]="p.options.sudo" (change)="setChecked()">
+                  Sudo?
+                </label>
+              <label class="checkbox">
+                  <input type="checkbox" [(ngModel)]="p.options.global" (change)="setChecked()">
+                  Global?
+                </label>
+              <label class="checkbox">
+                  <input type="checkbox" [(ngModel)]="p.options.save" (change)="setChecked()">
+                  Save?
+                </label>
+            </div>
+          </div>
+          <div class="level-left bd-structure-item">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+              <ul *ngFor="let tag of tags">
+                <li><a href="#"><span class="tag is-link">{{tag.name}}</span></a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="level-right bd-structure-item">
+            <div class="level-item" *ngIf="p.down">
+              <p class="subtitle is-5">
+                <strong>{{p.down}}</strong> <i class="fa fa-download"></i>
+              </p>
+            </div>
+            <div class="level-item">
+              <a class="button is-danger" (click)="remove(p)">
+                  <span class="icon is-small">
+                    <i class="fa fa-times"></i>
+                  </span>
+                  <span>Remove</span>
+                </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="media-right">
+        <div class="level-item" [style.visibility]="i != 0 ? 'visible' : 'hidden'">
+          <a class="button is-shifter" (click)="up(i)">
+                <span class="icon is-small">
+                  <i class="fa fa-arrow-up"></i>
+                </span>
+              </a>
+        </div>
+        <br>
+        <div class="level-item" [style.visibility]="i != manager.selectedPacks.length - 1 ? 'visible' : 'hidden'">
+          <a class="button is-shifter" (click)="down(i)">
+                <span class="icon is-small">
+                  <i class="fa fa-arrow-down"></i>
+                </span>
+              </a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+</div>

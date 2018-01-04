@@ -1,0 +1,52 @@
+<section class="hero is-medium" *ngIf="manager.shared.length == 0 && hasData == true">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+          Loading...
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="hero is-medium" *ngIf="manager.shared.length == 0 && hasData == false">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+          Nothing here :/
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="hero is-medium" *ngIf="manager.shared.length > 0">
+  <div class="hero-body">
+    <div class="container">
+      <div class="card" *ngFor="let s of manager.shared">
+        <div class="card-image">
+          <a href={{s.html_url}} target="_blank">{{s.filename}}</a>
+          <span>hosted by <a href="https://github.com" target="_blank">Github</a></span>
+          <a class="pull-right" href={{s.raw_url}} target="_blank">view raw</a>
+          <span class="pull-right">/</span>
+          <a class="pull-right" (click)="downloadFile(s)">
+              <i class="fa fa-download" aria-hidden="true"></i>
+              <span></span>
+              Download
+          </a>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <div class="control">
+                <textarea class="textarea" type="text" readonly>{{s.content}}</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-footer">
+    <nav class="pagination is-large" role="navigation" aria-label="pagination">
+      <a class="pagination-previous" (click)="previous()" [style.visibility]="page > 1 ? 'visible' : 'hidden'">Previous</a>
+      <a class="pagination-next" (click)="next()" [style.visibility]="hasData == true ? 'visible' : 'hidden'">Next page</a>
+    </nav>
+  </div>
+</section>

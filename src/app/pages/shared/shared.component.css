@@ -1,0 +1,58 @@
+.hero {
+  padding-top: 2rem;
+}
+
+.hero.is-medium .hero-body {
+  padding-bottom: 3rem;
+  padding-top: 1rem;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-image {
+  padding: 10px;
+  background-color: #c22255ff;
+}
+
+.card-image a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #c2df5bff;
+}
+
+.card-image a:hover {
+  color: #b1d72fff;
+}
+
+.card-image span {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 18px;
+  color: #c2df5bff;
+  cursor: default;
+}
+
+.card-content {
+  padding: 0.0rem;
+}
+
+.pagination.is-large {
+  width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.pagination-previous, .pagination-next {
+    border-color: #c22255ff;
+    color: #c22255ff;
+    font-weight: bold;
+}
+
+.pagination-previous:hover, .pagination-next:hover {
+    color: #6c0f2cff;
+    border-color: #6c0f2cff;
+}

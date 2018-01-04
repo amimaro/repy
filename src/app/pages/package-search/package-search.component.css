@@ -1,0 +1,15 @@
+.is-success {
+  width: 105px;
+}
+
+#repoSelect {
+    width: 400px;
+}
+
+.select {
+    margin-right: 10px;
+}
+
+.checkbox {
+    margin-right: 20px;
+}

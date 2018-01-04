@@ -1,0 +1,8 @@
+.hero {
+    padding-top: 2rem;
+}
+
+.hero.is-medium .hero-body {
+    padding-bottom: 3rem;
+    padding-top: 1rem;
+}

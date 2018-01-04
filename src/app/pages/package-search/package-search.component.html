@@ -1,0 +1,106 @@
+<div class="container" style="margin-top:20px">
+
+  <nav class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Package Manager</p>
+        <div class="select is-medium {{loadingRepos}}">
+          <select [(ngModel)]="manager.repo" (ngModelChange)="selectRepo($event)" id="repoSelect">
+              <option *ngFor="let r of manager.repos"  [ngValue]="r.doc">{{r.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <input [(ngModel)]="manager.searchInput" (input)="typing()" class="input is-large" type="text" placeholder="Search" autofocus>
+
+  <hr>
+
+  <section class="hero is-medium" *ngIf="!(manager.searchedPacks.length > 0) && isSearching == false">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+            Nothing here :/
+        </h1>
+        <h2 class="subtitle">
+          You may start with some search...
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class="hero is-medium" *ngIf="isSearching == true">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+            Loading...
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <div class="box" *ngFor="let p of manager.searchedPacks">
+    <article class="media">
+      <div class="media-left" *ngIf="p.img">
+        <figure class="image is-64x64">
+          <img src="{{p.img}}" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{p.name}}</strong>
+            <br> {{p.description}}
+            <br>
+            <br>
+            <a class="is-size-7" href={{p.url}} target="_blank">Go to project page</a>
+          </p>
+        </div>
+        <nav class="level bd-structure-item bd-is-structure-container">
+          <div class="level-left bd-structure-item" *ngIf="p.selectedRelease">
+            <p class="heading">Releases: </p>
+            <div class="select">
+              <select [(ngModel)]="p.selectedRelease" (ngModelChange)="setRelease($event)">
+                    <option *ngFor="let r of p.releases" [ngValue]="r">{{r}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="level-left bd-structure-item">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+              <ul *ngFor="let tag of tags">
+                <li><a href="#"><span class="tag is-link">{{tag.name}}</span></a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="level-right bd-structure-item">
+            <div class="level-item" *ngIf="p.down">
+              <p class="subtitle is-5">
+                <strong>{{p.down}}</strong> <i class="fa fa-download"></i>
+              </p>
+            </div>
+            <div *ngIf="p.isSelected == true; then selected else notSelected"></div>
+            <div class="level-item">
+              <ng-template #notSelected>
+                <a class="button is-success" (click)="add(p)">
+                  <span class="icon is-small">
+                    <i class="fa fa-plus"></i>
+                  </span>
+                  <span>Add</span>
+                </a>
+              </ng-template>
+              <ng-template #selected>
+                <a class="button is-danger" (click)="remove(p)">
+                  <span class="icon is-small">
+                    <i class="fa fa-times"></i>
+                  </span>
+                  <span>Remove</span>
+                </a>
+              </ng-template>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </article>
+  </div>
+
+</div>
