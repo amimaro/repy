@@ -18,7 +18,7 @@ export class PackageManagerService {
   private review: number = 1003;
   private manager: Manager;
   private localUrl = 'http://localhost:8080/api/';
-  private apiUrl = 'https://repy-api.herokuapp.com/api/';
+  private apiUrl = 'https://repy-app.herokuapp.com/api/';
   private shareUrl = 'https://repy-api-shares.herokuapp.com/';
 
   private headers = new Headers({

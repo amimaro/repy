@@ -20,7 +20,7 @@ var whitelist = ['http://localhost:4200',
   'http://localhost:8080',
   'http://www.repy.io',
   'https://www.repy.io',
-  'https://repy-api.herokuapp.com'
+  'https://repy-app.herokuapp.com'
 ]
 var corsOptions = {
   origin: function(origin, callback) {
