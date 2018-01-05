@@ -16,7 +16,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
-var whitelist = ['http://localhost:4200', 'http://localhost:8080', 'http://www.repy.io', 'https://www.repy.io']
+var whitelist = ['http://localhost:4200',
+  'http://localhost:8080',
+  'http://www.repy.io',
+  'https://www.repy.io',
+  'https://repy-api.herokuapp.com'
+]
 var corsOptions = {
   origin: function(origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
