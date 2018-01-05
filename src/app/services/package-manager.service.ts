@@ -17,7 +17,7 @@ export class PackageManagerService {
 
   private review: number = 1003;
   private manager: Manager;
-  private localUrl = 'http://localhost:8080/';
+  private localUrl = 'http://localhost:8080/api/';
   private apiUrl = 'https://repy-api.herokuapp.com/';
   private shareUrl = 'https://repy-api-shares.herokuapp.com/';
 
@@ -50,7 +50,7 @@ export class PackageManagerService {
 
   getSearch(query) {
     return this.http
-      .post(this.apiUrl + 'pack', {
+      .post(this.localUrl + "package", {
         "manager": query.manager,
         "query": query.search
       })
@@ -62,9 +62,9 @@ export class PackageManagerService {
 
   getRepos() {
     return this.http
-      .get(this.apiUrl + "distro", { headers: this.headers })
+      .get(this.localUrl + "manager")
       .toPromise()
-      .then(res => res.json().splice(4))
+      .then(res => res.json())
       .catch(this.handleError);
   }
 

@@ -6,7 +6,7 @@
         <p class="heading">Package Manager</p>
         <div class="select is-medium {{loadingRepos}}">
           <select [(ngModel)]="manager.repo" (ngModelChange)="selectRepo($event)" id="repoSelect">
-              <option *ngFor="let r of manager.repos"  [ngValue]="r.doc">{{r.name}}</option>
+              <option *ngFor="let r of manager.repos"  [ngValue]="r.code">{{r.display_name}}</option>
           </select>
         </div>
       </div>
