@@ -35,6 +35,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * [Angular CLI](https://cli.angular.io/) - A command line interface for Angular
 * [Bulma](http://://bulma.io/) - A modern CSS framework based on Flexbox
+* Backend based on [generator-api](https://github.com/ndelvalle/generator-api) - Yeoman generator for creating RESTful NodeJS APIs
 
 ## Contributing
 
