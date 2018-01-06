@@ -12,7 +12,7 @@
     "footer": "\n\n\n"
   },
   "config": {
-    "apt-get": "apt-get update\n",
+    "apt-get": "sudo apt-get update\n",
     "brew": "brew update\n",
     "choco": "@\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \"iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))\" && SET \"PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\bin\"\n"
   }
