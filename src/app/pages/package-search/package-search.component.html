@@ -5,19 +5,19 @@
       <div>
         <p class="heading">Package Manager</p>
         <div class="select is-medium {{loadingRepos}}">
-          <select [(ngModel)]="manager.repo" (ngModelChange)="selectRepo($event)" id="repoSelect">
-              <option *ngFor="let r of manager.repos"  [ngValue]="r.code">{{r.display_name}}</option>
+          <select [(ngModel)]="app.manager" (ngModelChange)="selectManager($event)" id="managerSelect">
+              <option *ngFor="let m of app.managers"  [ngValue]="m.code">{{m.display_name}}</option>
           </select>
         </div>
       </div>
     </div>
   </nav>
 
-  <input [(ngModel)]="manager.searchInput" (input)="typing()" class="input is-large" type="text" placeholder="Search" autofocus>
+  <input [(ngModel)]="app.searchInput" (input)="typing()" class="input is-large" type="text" placeholder="Search" autofocus>
 
   <hr>
 
-  <section class="hero is-medium" *ngIf="!(manager.searchedPacks.length > 0) && isSearching == false">
+  <section class="hero is-medium" *ngIf="!(app.searchedPacks.length > 0) && isSearching == false">
     <div class="hero-body">
       <div class="container has-text-centered">
         <h1 class="title">
@@ -39,7 +39,7 @@
     </div>
   </section>
 
-  <div class="box" *ngFor="let p of manager.searchedPacks">
+  <div class="box" *ngFor="let p of app.searchedPacks">
     <article class="media">
       <div class="media-left" *ngIf="p.img">
         <figure class="image is-64x64">
@@ -58,12 +58,7 @@
         </div>
         <nav class="level bd-structure-item bd-is-structure-container">
           <div class="level-left bd-structure-item" *ngIf="p.selectedRelease">
-            <p class="heading">Releases: </p>
-            <div class="select">
-              <select [(ngModel)]="p.selectedRelease" (ngModelChange)="setRelease($event)">
-                    <option *ngFor="let r of p.releases" [ngValue]="r">{{r}}</option>
-              </select>
-            </div>
+            <p class="heading">Release: {{p.releases[0]}}</p>
           </div>
           <div class="level-left bd-structure-item">
             <nav class="breadcrumb" aria-label="breadcrumbs">

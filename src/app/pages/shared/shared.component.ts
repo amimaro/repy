@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
-import { Manager } from '../../models/Manager';
+import { App } from '../../models/App';
 import { PackageManagerService } from '../../services/package-manager.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class SharedComponent implements OnInit {
 
   page: number;
   hasData: boolean = true;
-  manager: Manager;
+  app: App;
 
   constructor(private packageService: PackageManagerService, private route: ActivatedRoute, private router: Router) {
     this.page = route.params['_value']['page'];
@@ -22,7 +22,7 @@ export class SharedComponent implements OnInit {
       this.page = 1;
     }
     router.navigate(['/shared/' + this.page]);
-    this.manager = this.packageService.getManager();
+    this.app = this.packageService.getAppLocal();
   }
 
   ngOnInit() {
@@ -41,8 +41,8 @@ export class SharedComponent implements OnInit {
         this.hasData = true;
     });
     this.packageService.getShared(page).then(res => {
-      this.manager.shared = res;
-      this.packageService.setManager(this.manager);
+      this.app.shared = res;
+      this.packageService.setAppLocal(this.app);
     });
   }
 
@@ -63,8 +63,8 @@ export class SharedComponent implements OnInit {
   }
 
   clearShared() {
-    this.manager.shared = [];
-    this.packageService.setManager(this.manager);
+    this.app.shared = [];
+    this.packageService.setAppLocal(this.app);
   }
 
 }

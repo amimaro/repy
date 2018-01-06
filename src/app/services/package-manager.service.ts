@@ -7,16 +7,16 @@ import * as moment from 'moment';
 
 import 'rxjs/add/operator/toPromise';
 
+import { App } from '../models/App';
 import { Manager } from '../models/Manager';
 import { Registry } from '../models/Registry';
 import * as comments from '../../assets/comments.json';
-import * as pypiSimple from '../../assets/pypiSimple.json';
 
 @Injectable()
 export class PackageManagerService {
 
-  private review: number = 1003;
-  private manager: Manager;
+  private review: number = 1004;
+  private app: App;
   private localUrl = 'http://localhost:8080/api/';
   private apiUrl = 'https://repy-app.herokuapp.com/api/';
   private shareUrl = 'https://repy-api-shares.herokuapp.com/';
@@ -30,22 +30,22 @@ export class PackageManagerService {
     if (localStorage.getItem("repy-local") === 'undefined' ||
       localStorage.getItem("repy-local") === null ||
       this.review != JSON.parse(localStorage.getItem("repy-local")).review) {
-      this.manager = new Manager();
-      this.manager.review = this.review;
-      localStorage.setItem("repy-local", JSON.stringify(this.manager));
+      this.app = new App();
+      this.app.review = this.review;
+      localStorage.setItem("repy-local", JSON.stringify(this.app));
     } else {
-      this.manager = JSON.parse(localStorage.getItem("repy-local"));
+      this.app = JSON.parse(localStorage.getItem("repy-local"));
     }
   }
 
-  setManager(manager: Manager) {
-    this.manager = manager;
-    localStorage.setItem("repy-local", JSON.stringify(this.manager));
+  setAppLocal(app: App) {
+    this.app = app;
+    localStorage.setItem("repy-local", JSON.stringify(this.app));
   }
 
-  getManager() {
-    this.manager = JSON.parse(localStorage.getItem("repy-local"));
-    return this.manager;
+  getAppLocal() {
+    this.app = JSON.parse(localStorage.getItem("repy-local"));
+    return this.app;
   }
 
   getSearch(query) {
@@ -75,8 +75,8 @@ export class PackageManagerService {
       "description": "Anonymous Gist created with repy.io",
       "public": true,
       "files": {
-        [this.manager.filename]: {
-          "content": this.manager.script
+        [this.app.filename]: {
+          "content": this.app.script
         }
       }
     }, { headers: this.headers })
@@ -117,118 +117,94 @@ export class PackageManagerService {
   }
 
   addSelectedPack(pack) {
-    this.manager.selectedPacks.push(pack);
-    this.setManager(this.manager);
+    this.app.selectedPacks.push(pack);
+    this.setAppLocal(this.app);
   }
 
   removeSelectedPack(pack) {
     let index = -1;
-    for (let i in this.manager.selectedPacks) {
-      if (this.manager.selectedPacks[i].name == pack.name &&
-        this.manager.selectedPacks[i].repo == pack.repo &&
-        this.manager.selectedPacks[i].pub == pack.pub) {
+    for (let i in this.app.selectedPacks) {
+      if (this.app.selectedPacks[i].name == pack.name &&
+        this.app.selectedPacks[i].manager == pack.manager &&
+        this.app.selectedPacks[i].pub == pack.pub) {
         index = parseInt(i);
       }
     }
     if (index > -1)
-      this.manager.selectedPacks.splice(index, 1);
-    for (let p of this.manager.searchedPacks) {
+      this.app.selectedPacks.splice(index, 1);
+    for (let p of this.app.searchedPacks) {
       if (p.name == pack.name &&
-        p.repo == pack.repo &&
+        p.manager == pack.manager &&
         p.pub == pack.pub) {
         p.isSelected = false;
       }
     }
-    this.setManager(this.manager);
+    this.setAppLocal(this.app);
   }
 
   clearSelectedPacks() {
-    this.manager.selectedPacks = [];
-    for (let p of this.manager.searchedPacks) {
+    this.app.selectedPacks = [];
+    for (let p of this.app.searchedPacks) {
       p.isSelected = false;
     }
-    this.setManager(this.manager);
+    this.setAppLocal(this.app);
   }
 
   getSelectedPacks() {
-    return this.manager.selectedPacks;
+    return this.app.selectedPacks;
   }
 
   addDate() {
-    let date = this.manager.selectedOS == 'windows' ? 'REM' : '#';
+    let date = this.app.selectedOS == 'windows' ? 'REM' : '#';
     date += ' Created at: ' + moment().format('MMMM Do YYYY, h:mm:ss a');
     return date;
   }
 
   setupFileName() {
-    let ff = this.manager.selectedOS == 'windows' ? '.cmd' : '.sh';
-    let nff = this.manager.selectedOS == 'windows' ? '.sh' : '.cmd';
-    if (this.manager.filename == '') {
-      this.manager.filename = 'repy-script-' + (new Date().getTime()) + ff;
-    } else if (this.manager.filename.indexOf(ff) < 0) {
-      this.manager.filename += ff;
+    let ff = this.app.selectedOS == 'windows' ? '.cmd' : '.sh';
+    let nff = this.app.selectedOS == 'windows' ? '.sh' : '.cmd';
+    if (this.app.filename == '') {
+      this.app.filename = 'repy-script-' + (new Date().getTime()) + ff;
+    } else if (this.app.filename.indexOf(ff) < 0) {
+      this.app.filename += ff;
     }
-    if (this.manager.filename.indexOf(nff) > 0) {
-      this.manager.filename = this.manager.filename.substring(0, this.manager.filename.length - 7) + ff;
+    if (this.app.filename.indexOf(nff) > 0) {
+      this.app.filename = this.app.filename.substring(0, this.app.filename.length - 7) + ff;
     }
   }
 
   generateScript() {
-    let os = this.manager.selectedOS;
-    this.manager.script = comments[os]['header'] + '\n' + this.addDate() + '\n\n';
+    let os = this.app.selectedOS;
+    this.app.script = comments[os]['header'] + '\n' + this.addDate() + '\n\n';
     let text = "";
 
-    if (this.getSelectedPacks().findIndex(pack => pack.repo == 'apt') >= 0 && os != 'windows')
-      text += comments['config']['apt'];
-    if (this.getSelectedPacks().findIndex(pack => pack.repo == 'brew') >= 0 && os != 'windows')
+    if (this.getSelectedPacks().findIndex(pack => pack.manager == 'apt-get') >= 0)
+      text += comments['config']['apt-get'];
+    if (this.getSelectedPacks().findIndex(pack => pack.manager == 'brew') >= 0)
       text += comments['config']['brew'];
-    if (this.getSelectedPacks().findIndex(pack => pack.repo == 'choco') >= 0 && os == 'windows')
+    if (this.getSelectedPacks().findIndex(pack => pack.manager == 'choco') >= 0)
       text += comments['config']['choco'];
+    text += "\n";
 
     for (let pack of this.getSelectedPacks()) {
-      if (pack.repo == 'npm') {
-        text += pack.options.sudo ? "sudo " : "";
-        text += "npm install";
-        text += pack.options.global ? " -g " : " ";
-        text += pack.name;// + "@" + pack.selectedRelease;
-        text += pack.options.save ? " --save" : "";
-      } else if (pack.repo == 'apt') {
-        if (os != 'windows') {
-          //   if (pack.selectedRelease != '')
-          //     text += "sudo apt-get install -y " + pack.name + "=" + pack.selectedRelease;
-          //   else
-          text += "sudo apt-get install -y " + pack.name;
-        }
-      } else if (pack.repo == 'brew') {
-        text += "brew install ";
-        text += pack.name;
-      } else if (pack.repo == 'gem') {
-        if (os != 'windows')
-          text += "sudo ";
-        text += "gem install ";
-        text += pack.name;// + ' -v ' + pack.selectedRelease + '\n';
-      } else if (pack.repo == 'pip') {
-        if (os != 'windows')
-          text += "sudo ";
-        text += "pip install ";
-        text += pack.name;// + ' -v ' + pack.selectedRelease + '\n';
-      } else if (pack.repo == 'choco') {
-        if (os == 'windows') {
-          text += "choco install ";
-          text += pack.name + " -y";// + ' -v ' + pack.selectedRelease + '\n';
-        }
-      }
+      let managerOptions: Manager = this.app.managers[this.app.managers.findIndex(manager => manager['code'] == pack.manager)];
+      text += pack.options.sudo ? "sudo " : "";
+      text += managerOptions['cmd'];
+      text += pack.options.global ? " -g " : " ";
+      text += pack.name;
+      text += managerOptions['sufix'] ? ' ' + managerOptions['sufix'] : "";
+      text += pack.options.save ? " --save" : "";
       text += "\n";
     }
-    this.manager.script += text + comments[this.manager.selectedOS]['footer'];
+    this.app.script += text + comments[this.app.selectedOS]['footer'];
     this.setupFileName();
-    this.setManager(this.manager);
+    this.setAppLocal(this.app);
   }
 
   downloadScript() {
     this.setupFileName();
-    let blob = new Blob([this.manager.script], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, this.manager.filename);
+    let blob = new Blob([this.app.script], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, this.app.filename);
   }
 
   downloadFile(file) {

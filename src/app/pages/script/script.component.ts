@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Manager } from '../../models/Manager';
+import { App } from '../../models/App';
 import { PackageManagerService } from '../../services/package-manager.service';
 
 @Component({
@@ -10,10 +10,10 @@ import { PackageManagerService } from '../../services/package-manager.service';
 })
 export class ScriptComponent implements OnInit {
 
-  manager: Manager;
+  app: App;
 
   constructor(private packageService: PackageManagerService) {
-    this.manager = this.packageService.getManager();
+    this.app = this.packageService.getAppLocal();
     this.packageService.generateScript();
   }
 

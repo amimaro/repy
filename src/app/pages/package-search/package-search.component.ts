@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { App } from '../../models/App';
 import { Manager } from '../../models/Manager';
 import { PackageManagerService } from '../../services/package-manager.service';
 
@@ -11,29 +12,29 @@ import { PackageManagerService } from '../../services/package-manager.service';
 export class PackageSearchComponent implements OnInit {
 
   timer: any;
-  manager: Manager;
+  app: App;
   isSearching: boolean = false;
   loadingRepos: string = 'is-loading';
 
   constructor(private packageService: PackageManagerService) {
-    this.manager = this.packageService.getManager();
+    this.app = this.packageService.getAppLocal();
     this.timer = 0;
   }
 
   ngOnInit() {
     this.packageService.getRepos().then(res => {
-      this.manager.repos = res;
-      if (this.manager.repo == "")
-        this.manager.repo = 'apt';
-      this.packageService.setManager(this.manager);
+      this.app.managers = Object.values(res) as Manager[];
+      if (this.app.manager == "")
+        this.app.manager = 'apt-get';
+      this.packageService.setAppLocal(this.app);
       this.loadingRepos = '';
     });
   }
 
-  selectRepo(repo) {
-    this.manager.repo = repo;
-    this.manager.searchedPacks = [];
-    this.packageService.setManager(this.manager);
+  selectManager(manager) {
+    this.app.manager = manager;
+    this.app.searchedPacks = [];
+    this.packageService.setAppLocal(this.app);
     this.search();
   }
 
@@ -47,24 +48,24 @@ export class PackageSearchComponent implements OnInit {
   }
 
   search() {
-    this.manager.searchedPacks = [];
+    this.app.searchedPacks = [];
     let searchObj = {
-      'search': this.manager.searchInput,
-      'manager': this.manager.repo
+      'search': this.app.searchInput,
+      'manager': this.app.manager
     };
-    if (this.manager.searchInput.length >= 1) {
+    if (this.app.searchInput.length >= 1) {
       this.isSearching = true;
       this.packageService.getSearch(searchObj)
         .then(res => {
           res.map((p) => {
             p.isSelected = this.checkSelected(p);
           });
-          this.manager.searchedPacks = res;
+          this.app.searchedPacks = res;
           this.isSearching = false;
-          this.packageService.setManager(this.manager);
+          this.packageService.setAppLocal(this.app);
         });
     } else {
-      this.manager.searchedPacks = [];
+      this.app.searchedPacks = [];
     }
   }
 
@@ -79,15 +80,15 @@ export class PackageSearchComponent implements OnInit {
   }
 
   checkSelected(pack) {
-    for (let p of this.manager.selectedPacks) {
-      if (p.name == pack.name && p.repo == pack.repo && p.distro == pack.distro && p.publisher == pack.publisher)
+    for (let p of this.app.selectedPacks) {
+      if (p.name == pack.name && p.manager == pack.manager && p.distro == pack.distro && p.publisher == pack.publisher)
         return true;
     }
     return false;
   }
 
   setRelease(release) {
-    this.packageService.setManager(this.manager);
+    this.packageService.setAppLocal(this.app);
   }
 
 }

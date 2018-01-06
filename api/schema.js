@@ -4,7 +4,7 @@ function Schema() {
     this.description = "";
     this.publisher = "";
     this.github = "";
-    this.repo = "";
+    this.manager = "";
     this.distro = "";
     this.arch = "";
     this.selectedRelease = "";
