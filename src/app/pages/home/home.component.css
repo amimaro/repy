@@ -2,10 +2,16 @@
   font-family: monospace !important;
 }
 
+.hero-body {
+  padding-bottom: 4rem !important;
+  padding-top: 5rem !important;
+}
+
 .title {
   color: #6c0f2cff !important;
   cursor: default;
 }
+
 .subtitle {
   color: #6c0f2cff !important;
   cursor: default;
@@ -38,4 +44,13 @@
   background-color: #3c4a0eff;
   border-color: transparent;
   color: #fff;
+}
+
+.card {
+  margin: 25px 300px 25px 300px;
+}
+
+.card-header-title {
+    color: #6c0f2cff !important;
+    cursor: default;
 }
