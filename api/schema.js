@@ -7,8 +7,8 @@ function Schema() {
     this.manager = "";
     this.distro = "";
     this.arch = "";
-    this.selectedRelease = "";
     this.releases = [];
+    this.selectedRelease = "";
     this.img = "";
     this.down = "";
     this.options = {
