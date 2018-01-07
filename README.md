@@ -47,7 +47,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Don't execute any script if you aren't 100% sure
+* Please, don't execute any script if you aren't 100% sure
 * [Influences](https://github.com/iagocavalcante/set-windows-enviroment)
 * Why repy? Hmm...Sound like "happy"
 * [But why the beet logo?](https://translate.google.com/#auto/en/repy)
