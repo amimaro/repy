@@ -36,9 +36,9 @@ class ManagerFacade {
             packages = npm(res);
           else if (manager === 'pip')
             packages = pip(res);
+          // Add new package manager functions here
           else
             return packages;
-          // Add new package manager functions here
 
           return requests.length > 0 ? requests.shift() : packages;
         })

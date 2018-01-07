@@ -12,9 +12,9 @@ function Schema() {
     this.img = "";
     this.down = "";
     this.options = {
-        'sudo': false,
-        'global': false,
-        'save': false
+        "sudo": false,
+        "global": false,
+        "save": false
     };
     this.isSelected = false;
 }
