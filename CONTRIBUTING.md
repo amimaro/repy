@@ -63,24 +63,24 @@ module.exports = gem;
 4. Before mapping, all data pushed to 'packages' should follow a data base model available at api/schema.js (* required data):
 ```
 {
-    "name": "",				// *package name
-    "url": "",				// homepage url
-    "description": "", 		// package description
-    "publisher": "",		// author/publisher name
-    "github": "",			// github url
-    "manager": "",			// *package manager code e.g. apt-get, npm, gem...
-    "distro": "",			// distribution name
-    "arch": "",				// architecture name
-   	"releases": [],			// version releases
-    "selectedRelease": "",	// selected release, usually the first entry os 'releases'
-    "img": "",				// icon url
-    "down": "",				// download count
-    "options": {			// options setup
-        "sudo": false,		// options: sudo command
-        "global": false,	// options: global commad for npm (-g)
-        "save": false		// options: save command for npm (--save)
+    "name": "",             // *package name
+    "url": "",              // homepage url
+    "description": "", 		  // package description
+    "publisher": "",		    // author/publisher name
+    "github": "",			      // github url
+    "manager": "",			    // *package manager code e.g. apt-get, npm, gem...
+    "distro": "",			      // distribution name
+    "arch": "",				      // architecture name
+   	"releases": [],			    // version releases
+    "selectedRelease": "",  // selected release, usually the first entry os 'releases'
+    "img": "",				      // icon url
+    "down": "",				      // download count
+    "options": {			      // options setup
+        "sudo": false,		  // options: sudo command
+        "global": false,	  // options: global commad for npm (-g)
+        "save": false		    // options: save command for npm (--save)
     },
-    "isSelected": false		// check if selected
+    "isSelected": false		  // check if selected
 }
 ```
 5. Data mapping should be based on the api response. At each iteration a new Schema is created and the api data is mapped to their respective pair. Then, the schema object is pushed to the packages array.:
@@ -115,7 +115,7 @@ module.exports = gem;
 ```
 * Add the function where it's marked on the code by the comment
 ```
-		  ...
+		      ...
           else if (manager === 'npm')
             packages = npm(res);
           else if (manager === 'pip')
