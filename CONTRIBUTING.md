@@ -115,7 +115,7 @@ module.exports = gem;
 ```
 * Add the function where it's marked on the code by the comment
 ```
-		      ...
+...
           else if (manager === 'npm')
             packages = npm(res);
           else if (manager === 'pip')
@@ -123,6 +123,6 @@ module.exports = gem;
           else if (manager === 'gem')
             packages = gem(res);
           // Add new package manager functions here
-          ...
+...
 ```
 7. All done! Thanks for your support! Take a look at the pull request section to merge the changes.
