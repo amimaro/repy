@@ -33,9 +33,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Built With
 
-* [Angular CLI](https://cli.angular.io/) - A command line interface for Angular
-* [Bulma](http://://bulma.io/) - A modern CSS framework based on Flexbox
-* Backend based on [generator-api](https://github.com/ndelvalle/generator-api) - Yeoman generator for creating RESTful NodeJS APIs
+* [Angular CLI](https://cli.angular.io/) - A command line interface for Angular.
+* [Bulma](http://://bulma.io/) - A modern CSS framework based on Flexbox.
+* Backend based on [generator-api](https://github.com/ndelvalle/generator-api) - Yeoman generator for creating RESTful NodeJS APIs.
 
 ## Contributing
 
@@ -43,11 +43,11 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for the process for submitting pu
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
-* Please, don't execute any script if you aren't 100% sure
+* Please, don't execute any script if you aren't 100% sure.
 * [Influences](https://github.com/iagocavalcante/set-windows-enviroment)
-* Why repy? Hmm...Sound like "happy"
+* Why repy? Hmm...Sound like "happy".
 * [But why the beet logo?](https://translate.google.com/#auto/en/repy)
