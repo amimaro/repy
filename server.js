@@ -37,7 +37,7 @@ app.use(express.static(__dirname + '/dist'));
 app.use('/', routes);
 
 app.listen(config.server.port, () => {
-  console.log(`Connected on port ${config.server.port}`);
+  console.log(`Connected on http://localhost:${config.server.port}`);
 });
 
 module.exports = app;
