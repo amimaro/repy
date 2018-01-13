@@ -23,7 +23,7 @@ const managers = {
     'sufix': ''
   },
   'pip': {
-    'display_name': 'Pip',
+    'display_name': 'PyPi',
     'code': 'pip',
     'url': ['https://pypi-server-api.herokuapp.com/query/'],
     'cmd': 'pip install',
