@@ -15,9 +15,9 @@ import * as comments from '../../assets/comments.json';
 @Injectable()
 export class PackageManagerService {
 
-  private review: number = 1004;
+  private review: number = 1005;
   private app: App;
-  private localUrl = 'http://localhost:8080/api/';
+  // private apiUrl = 'http://localhost:8080/api/';
   private apiUrl = 'http://www.repy.io/api/';
   private shareUrl = 'https://repy-api-shares.herokuapp.com/';
 
