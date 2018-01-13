@@ -1,9 +1,72 @@
-<section class="hero is-medium">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h1 class="title">
-          Comming soon...
-      </h1>
+<section class="section">
+  <div class="container">
+    <h1 class="title is-2">Documentation</h1>
+    <h2 class="subtitle is-4">
+        Starting with a <strong>warning</strong>:
+        <p class="has-text-danger">Don't execute any script if you aren't 100% sure of what it does.</p>
+    </h2>
+
+    <p class="subtitle is-4">Overview</p>
+    <p class="has-text-justified">
+      Repy was built to generate scripts for various platforms with support for multiple package managers. It will be possible to download all the packages you prefer easily.
+    </p>
+    <p class="has-text-justified">
+      You may have some effort at first with the searching, setting-up options to the scripts or maybe customizing it yourself...but once done, it's a piece of cake.
+    </p>
+
+    <br>
+    <p class="subtitle is-4">Available package managers:</p>
+    <div class="content">
+      <ul>
+        <li *ngFor="let m of app.managers">{{m.display_name}}</li>
+      </ul>
     </div>
+
+    <br>
+    <p class="subtitle is-4">Animated example</p>
+    <div>
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            1. Select the package manager and search your favorite packages:
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <img src="assets/search.gif" alt="Search">
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            2. Check the selected packages and setup possible options:
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <img src="assets/list.gif" alt="Search">
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            3. All set to go! Build and Download your script:
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <img src="assets/generate.gif" alt="Search">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <p class="subtitle is-4">Contributing</p>
+    <p>Please read <a href="https://github.com/Amimaro/repy/blob/master/CONTRIBUTING.md" target="_blank">CONTRIBUTING.md</a> for further contributions.</p>
+
   </div>
 </section>
