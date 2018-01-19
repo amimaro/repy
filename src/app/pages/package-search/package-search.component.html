@@ -73,6 +73,16 @@
                 <strong>{{p.down}}</strong> <i class="fa fa-download"></i>
               </p>
             </div>
+            <div class="level-item" *ngIf="p.forks">
+              <p class="subtitle is-5">
+                <strong>{{p.forks}}</strong> <i class="fa fa-code-fork"></i>
+              </p>
+            </div>
+            <div class="level-item" *ngIf="p.stars">
+              <p class="subtitle is-5">
+                <strong>{{p.stars}}</strong> <i class="fa fa-star"></i>
+              </p>
+            </div>
             <div *ngIf="p.isSelected == true; then selected else notSelected"></div>
             <div class="level-item">
               <ng-template #notSelected>
