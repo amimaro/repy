@@ -5,6 +5,7 @@ const npm = require('./model/npm');
 const gem = require('./model/gem');
 const pip = require('./model/pip');
 const brew = require('./model/brew');
+const bower = require('./model/bower');
 const choco = require('./model/choco');
 const aptget = require('./model/aptget');
 
@@ -36,6 +37,8 @@ class ManagerFacade {
             packages = npm(res);
           else if (manager === 'pip')
             packages = pip(res);
+          else if (manager === 'bower')
+            packages = bower(res);
           // Add new package manager functions here
           else
             return packages;

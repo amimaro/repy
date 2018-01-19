@@ -11,6 +11,8 @@ function Schema() {
     this.selectedRelease = "";
     this.img = "";
     this.down = "";
+    this.forks = "";
+    this.stars = "";
     this.options = {
         "sudo": false,
         "global": false,

@@ -42,6 +42,13 @@ const managers = {
     'url': ['http://searchbrew.com/search?q='],
     'cmd': 'brew install',
     'sufix': ''
+  },
+  'bower': {
+    'display_name': 'Bower',
+    'code': 'bower',
+    'url': ['https://libraries.io/api/bower-search?q='],
+    'cmd': 'bower install',
+    'sufix': ''
   }
 };
 
