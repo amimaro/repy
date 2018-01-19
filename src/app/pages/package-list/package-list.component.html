@@ -70,10 +70,10 @@
           <div class="level-left bd-structure-item" *ngIf="p.selectedRelease">
             <p class="heading" style="margin-right: 20px">Release: {{p.releases[0]}}</p>
             <div>
-              <label class="checkbox" *ngIf="p.manager != 'choco'">
+              <!-- <label class="checkbox" *ngIf="p.manager != 'choco'">
                   <input type="checkbox" [(ngModel)]="p.options.sudo" (change)="setChecked()">
                   Sudo?
-                </label>
+                </label> -->
               <label class="checkbox" *ngIf="p.manager == 'npm'">
                   <input type="checkbox" [(ngModel)]="p.options.global" (change)="setChecked()">
                   Global?
