@@ -12,7 +12,6 @@ export class Registry {
   img: string = "";
   down: string = "";
   options: object = {
-    'sudo': false,
     'global': false,
     'save': false
   };

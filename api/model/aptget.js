@@ -25,9 +25,8 @@ function aptget(res, prev) {
         schema.selectedRelease = schema.releases[0];
         schema.url = "https://launchpad.net/ubuntu/+source/" + bin_package_name;
         schema.options = {
-          'sudo': true,
           'global': false,
-          'save': false
+          'save': false,
         };
         packages.push(schema);
       }

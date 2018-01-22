@@ -76,7 +76,6 @@ module.exports = gem;
     "img": "",  // icon url
     "down": "",  // download count
     "options": {  // options setup
-        "sudo": false,  // options: sudo command
         "global": false,  // options: global commad for npm (-g)
         "save": false  // options: save command for npm (--save)
     },
