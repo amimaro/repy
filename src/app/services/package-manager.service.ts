@@ -69,7 +69,7 @@ export class PackageManagerService {
   }
 
   authorize() {
-    window.location.href = 'https://github.com/login/oauth/authorize?scope=gist&client_id=930ed3014d5370a7ac2d';
+    window.location.href = 'https://github.com/login/oauth/authorize?scope=gist&client_id=d0482296dbff8b53191c';
   }
 
   postGist(code) {
