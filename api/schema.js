@@ -13,7 +13,8 @@ function Schema() {
     this.down = "";
     this.options = {
         "global": false,
-        "save": false
+        "save": false,
+        "saveDev": false
     };
     this.isSelected = false;
 }

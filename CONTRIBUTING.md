@@ -78,6 +78,7 @@ module.exports = gem;
     "options": {  // options setup
         "global": false,  // options: global commad for npm (-g)
         "save": false  // options: save command for npm (--save)
+        "saveDev": false  // options: save-dev command for npm (--save-dev)
     },
     "isSelected": false  // check if selected
 }

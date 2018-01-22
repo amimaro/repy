@@ -222,6 +222,7 @@ export class PackageManagerService {
       text += pack.name;
       text += managerOptions['sufix'] ? ' ' + managerOptions['sufix'] : "";
       text += pack.options.save ? " --save" : "";
+      text += pack.options.saveDev ? " --save-dev" : "";
       text += "\n";
     }
     this.app.script += text + comments[this.app.selectedOS]['footer'];

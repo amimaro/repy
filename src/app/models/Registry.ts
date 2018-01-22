@@ -13,7 +13,8 @@ export class Registry {
   down: string = "";
   options: object = {
     'global': false,
-    'save': false
+    'save': false,
+    'saveDev': false,
   };
   isSelected: boolean = false;
 }

@@ -24,10 +24,6 @@ function aptget(res, prev) {
           schema.releases.push(bin_package_version);
         schema.selectedRelease = schema.releases[0];
         schema.url = "https://launchpad.net/ubuntu/+source/" + bin_package_name;
-        schema.options = {
-          'global': false,
-          'save': false,
-        };
         packages.push(schema);
       }
     }
