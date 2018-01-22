@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const bluebird = require('bluebird');
 const cors = require('cors');
 
+require('dotenv').config()
 const config = require('./config');
 const routes = require('./routes');
 const app = express();

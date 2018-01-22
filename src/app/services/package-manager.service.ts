@@ -17,8 +17,8 @@ export class PackageManagerService {
 
   private review: number = 1005;
   private app: App;
-  // private apiUrl = 'http://localhost:8080/api/';
-  private apiUrl = 'http://www.repy.io/api/';
+  private apiUrl = 'http://localhost:8080/api/';
+  // private apiUrl = 'http://www.repy.io/api/';
   private shareUrl = 'https://repy-api-shares.herokuapp.com/';
 
   private headers = new Headers({
@@ -65,6 +65,34 @@ export class PackageManagerService {
       .get(this.apiUrl + "manager")
       .toPromise()
       .then(res => res.json())
+      .catch(this.handleError);
+  }
+
+  authorize() {
+    window.location.href = 'https://github.com/login/oauth/authorize?scope=gist&client_id=930ed3014d5370a7ac2d';
+  }
+
+  postGist(code) {
+    this.setupFileName();
+    this.spinnerService.show();
+    this.http.post(this.apiUrl + 'callback', {
+      "code": code,
+      "data": {
+        "description": "Gist created with repy.io",
+        "public": true,
+        "files": {
+          [this.app.filename]: {
+            "content": this.app.script
+          }
+        }
+      }
+    }, { headers: this.headers })
+      .toPromise()
+      .then(res => {
+        res = res.json();
+        console.log(res);
+        this.postAsShared(res);
+      })
       .catch(this.handleError);
   }
 

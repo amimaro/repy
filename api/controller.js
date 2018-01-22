@@ -7,11 +7,17 @@ class ManagerController {
     this.facade = facade;
   }
 
+  callback(req, res, next) {
+    this.facade.callback(req.body)
+      .then(collection => res.status(200).json(collection))
+      .catch(err => next(err));
+  }
+
   getData(req, res, next) {
     let manager = req.body.manager;
     let query = req.body.query;
     if (query != "" && Object.keys(managers).indexOf(manager) >= 0) {
-      return this.facade.getData(req.body)
+      this.facade.getData(req.body)
         .then(collection => res.status(200).json(collection))
         .catch(err => next(err));
     } else {

@@ -7,8 +7,53 @@ const pip = require('./model/pip');
 const brew = require('./model/brew');
 const choco = require('./model/choco');
 const aptget = require('./model/aptget');
+let at = '';
 
 class ManagerFacade {
+
+  callback(...args) {
+    let code = args[0].code;
+    let data = args[0].data;
+    var options = {
+      method: 'POST',
+      uri: 'https://github.com/login/oauth/access_token',
+      body: {
+        client_id: process.env.GITHUB_KEY,
+        client_secret: process.env.GITHUB_SECRET,
+        code: code
+      },
+      json: true
+    };
+    return rp(options)
+      .then(function(parsedBody) {
+        at = parsedBody.access_token;
+        var options = {
+          method: 'POST',
+          uri: 'https://api.github.com/gists',
+          body: data,
+          headers: {
+            'User-Agent': 'Repy'
+          },
+          qs: {
+            access_token: at
+          },
+          json: true
+        };
+        return rp(options)
+          .then(function(parsedBody) {
+            console.log(at);
+            console.log(parsedBody);
+            return parsedBody;
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+        return parsedBody;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
 
   getData(...args) {
 
