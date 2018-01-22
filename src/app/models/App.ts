@@ -13,4 +13,5 @@ export class App {
   selectedOS: string = 'linux';
   os: any[] = ['Windows', 'Linux', 'MacOS'];
   review: number = 0;
+  code: string = '';
 }

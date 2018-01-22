@@ -31,7 +31,11 @@ export class ScriptComponent implements OnInit {
   }
 
   createGist(code) {
-    this.packageService.postGist(code);
+    if(this.app.code !== code){
+      this.app.code = code;
+      this.packageService.setAppLocal(this.app);
+      this.packageService.postGist(code);
+    }
   }
 
   createAnonymousGist() {
