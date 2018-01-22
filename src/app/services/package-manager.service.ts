@@ -216,6 +216,10 @@ export class PackageManagerService {
 
     for (let pack of this.getSelectedPacks()) {
       let managerOptions: Manager = this.app.managers[this.app.managers.findIndex(manager => manager['code'] == pack.manager)];
+<<<<<<< HEAD
+=======
+      // text += pack.options.sudo ? "sudo " : "";
+>>>>>>> 0b37f47def101b030e775739830457d7ec8b1e30
       text += (os === 'windows') ? 'CALL ' : '';
       text += managerOptions['cmd'];
       text += pack.options.global ? " -g " : " ";
