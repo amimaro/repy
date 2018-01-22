@@ -191,7 +191,7 @@ export class PackageManagerService {
   setupFileName() {
     let ff = this.app.selectedOS == 'windows' ? '.cmd' : '.sh';
     let nff = this.app.selectedOS == 'windows' ? '.sh' : '.cmd';
-    if (this.app.filename == '') {
+    if (this.app.filename == '' || this.app.filename.indexOf('repy-script-') >= 0) {
       this.app.filename = 'repy-script-' + (new Date().getTime()) + ff;
     } else if (this.app.filename.indexOf(ff) < 0) {
       this.app.filename += ff;
@@ -216,10 +216,6 @@ export class PackageManagerService {
 
     for (let pack of this.getSelectedPacks()) {
       let managerOptions: Manager = this.app.managers[this.app.managers.findIndex(manager => manager['code'] == pack.manager)];
-<<<<<<< HEAD
-=======
-      // text += pack.options.sudo ? "sudo " : "";
->>>>>>> 0b37f47def101b030e775739830457d7ec8b1e30
       text += (os === 'windows') ? 'CALL ' : '';
       text += managerOptions['cmd'];
       text += pack.options.global ? " -g " : " ";
