@@ -73,7 +73,6 @@ export class PackageManagerService {
   }
 
   postGist(code) {
-    this.setupFileName();
     this.spinnerService.show();
     this.http.post(this.apiUrl + 'callback', {
       "code": code,

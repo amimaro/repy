@@ -23,7 +23,7 @@
     <div class="container has-text-centered">
       <div class="field">
         <div class="control">
-          <input [(ngModel)]="app.filename" class="input is-beet is-medium" type="text" placeholder="Filename (Default: repy-script.sh)" autofocus>
+          <input [(ngModel)]="app.filename" (input)="typing()" class="input is-beet is-medium" type="text" placeholder="Filename (Default: repy-script.sh)" autofocus>
         </div>
       </div>
       <div class="field">

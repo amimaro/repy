@@ -26,12 +26,16 @@ export class ScriptComponent implements OnInit {
     });
   }
 
+  typing() {
+    this.packageService.setAppLocal(this.app);
+  }
+
   authorize() {
     this.packageService.authorize();
   }
 
   createGist(code) {
-    if(this.app.code !== code){
+    if (this.app.code !== code) {
       this.app.code = code;
       this.packageService.setAppLocal(this.app);
       this.packageService.postGist(code);
