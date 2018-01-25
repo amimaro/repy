@@ -1,7 +1,7 @@
 {
   "name": "repy",
   "description": "Script generator for setting-up environments",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "repository": "github:amimaro/repy",
   "scripts": {
